@@ -6,6 +6,7 @@ import 'package:notes_app/Widgets/custom_button.dart';
 import 'package:notes_app/Widgets/custom_textfield.dart';
 import 'package:notes_app/constants.dart';
 import 'package:notes_app/cubits/AddNote%20Cubit/addnote_cubit.dart';
+import 'package:notes_app/cubits/AddNote%20Cubit/notes_cubit/notes_cubit.dart';
 
 class CustomNoteBottomSheet extends StatefulWidget {
   const CustomNoteBottomSheet({super.key});
@@ -30,6 +31,7 @@ class _CustomNoteBottomSheetState extends State<CustomNoteBottomSheet> {
               print("failure is ${state.error}");
             }
             if (state is AddnoteSuccess) {
+              BlocProvider.of<NotesCubit>(context).fetchAllNotes();
               Navigator.pop(context);
             }
           },

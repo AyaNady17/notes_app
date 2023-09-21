@@ -5,6 +5,7 @@ import 'package:notes_app/Models/note_model.dart';
 import 'package:notes_app/Widgets/custom_button.dart';
 import 'package:notes_app/Widgets/custom_textfield.dart';
 import 'package:notes_app/cubits/AddNote%20Cubit/addnote_cubit.dart';
+import 'package:notes_app/cubits/AddNote%20Cubit/notes_cubit/notes_cubit.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({
