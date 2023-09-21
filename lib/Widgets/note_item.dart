@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:notes_app/Models/note_model.dart';
 import 'package:notes_app/views/edite_note_view.dart';
 
 class NotesItem extends StatelessWidget {
-  const NotesItem({super.key});
-
+  const NotesItem({super.key, required this.note});
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -16,21 +17,21 @@ class NotesItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(top: 24, bottom: 24, left: 12),
         decoration: BoxDecoration(
-          color: const Color(0xffFFCC80),
+          color: Color(note.color),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: const Text(
-                "Flutter Tips",
-                style: TextStyle(fontSize: 22, color: Colors.black),
+              title: Text(
+                note.title,
+                style: const TextStyle(fontSize: 22, color: Colors.black),
               ),
               subtitle: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 12),
                 child: Text(
-                  "Build your career with Tharwat Samy",
+                  note.subTitle,
                   style: TextStyle(
                       fontSize: 15, color: Colors.black.withOpacity(0.4)),
                 ),
@@ -44,7 +45,7 @@ class NotesItem extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(right: 24),
               child: Text(
-                "sep 6,2023",
+                note.date,
                 style: TextStyle(
                     fontSize: 13, color: Colors.black.withOpacity(0.4)),
               ),
