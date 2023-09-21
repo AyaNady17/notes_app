@@ -20,7 +20,10 @@ class _CustomNoteBottomSheetState extends State<CustomNoteBottomSheet> {
     return BlocProvider(
       create: (context) => AddnoteCubit(),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: EdgeInsets.only(
+            left: 16,
+            right: 16,
+            bottom: MediaQuery.of(context).viewInsets.bottom),
         child: BlocConsumer<AddnoteCubit, AddnoteState>(
           listener: (context, state) {
             if (state is AddnoteFailure) {
@@ -31,8 +34,8 @@ class _CustomNoteBottomSheetState extends State<CustomNoteBottomSheet> {
             }
           },
           builder: (context, state) {
-            return ModalProgressHUD(
-                inAsyncCall: state is AddnoteLoading ? true : false,
+            return AbsorbPointer(
+                absorbing: state is AddnoteLoading ? true : false,
                 child: const SingleChildScrollView(child: AddNoteForm()));
           },
         ),
